@@ -5,10 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 
 
-data class UnsplashResponse(val listUnsplash : List<UnpslashSingleResponse>)
+data class UnsplashResponse(val photos : List<UnsplashSingleResponse>)
 
 @Parcelize
-data class UnpslashSingleResponse(
+data class UnsplashSingleResponse(
     val id: String,
     val description: String?,
     val urls : UnSplashPhotoUrls,

@@ -1,4 +1,4 @@
-package com.example.composeimageapp
+package com.example.composeimageapp.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.composeimageapp.ui.images.ImagesMainScreen
 import com.example.composeimageapp.ui.images.UnsplashItem
 import com.example.composeimageapp.ui.theme.ComposeImageAppTheme
 
@@ -22,24 +23,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    UnsplashApp()
+                    ImagesMainScreen()
                 }
             }
         }
     }
 }
-
-@Composable
-fun UnsplashApp() {
-
-    UnsplashItem()
-
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ComposeImageAppTheme {
-        UnsplashApp()
+        ImagesMainScreen()
     }
 }
