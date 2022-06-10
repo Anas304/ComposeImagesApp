@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -18,33 +17,30 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.composeimageapp.R
-import com.example.composeimageapp.model.response.UnsplashSingleResponse
+import com.example.composeimageapp.model.response.UnsplashImage
 import com.example.composeimageapp.ui.theme.ComposeImageAppTheme
-
 
 @Composable
 fun ImagesMainScreen() {
 
-    val viewModel : ImagesViewModel = viewModel()
+    val viewModel: ImagesViewModel = viewModel()
     val photos = viewModel.photosState.value
 
     Surface(
         color = Color.White
     ) {
-        LazyColumn(contentPadding = PaddingValues(16.dp)){
-            items(photos){ photo ->
+        LazyColumn(contentPadding = PaddingValues(16.dp)) {
+            items(photos) { photo ->
                 UnsplashItem(photo = photo)
             }
         }
     }
 }
 
-
-
-
 @Composable
-fun UnsplashItem(photo : UnsplashSingleResponse) {
+fun UnsplashItem(photo: UnsplashImage) {
 
+    /** TODO: Navigatioon to Details screen*/
     Card(
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
@@ -62,11 +58,13 @@ fun UnsplashItem(photo : UnsplashSingleResponse) {
             contentAlignment = Alignment.BottomCenter,
 
             ) {
+
             Image(
-                painter = rememberImagePainter(data =photo.urls),
+                painter = rememberImagePainter(data = photo),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize()
             )
+
             Surface(
                 modifier = Modifier
                     .height(40.dp)
@@ -95,8 +93,6 @@ fun UnsplashItem(photo : UnsplashSingleResponse) {
 
         }
     }
-
-
 }
 
 @Preview(showBackground = true)
