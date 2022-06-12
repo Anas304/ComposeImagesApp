@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.composeimageapp.R
 import com.example.composeimageapp.model.response.UnsplashImage
@@ -32,6 +33,7 @@ fun ImagesMainScreen() {
         LazyColumn(contentPadding = PaddingValues(16.dp)) {
             items(photos) { photo ->
                 UnsplashItem(photo = photo)
+
             }
         }
     }
@@ -60,7 +62,7 @@ fun UnsplashItem(photo: UnsplashImage) {
             ) {
 
             Image(
-                painter = rememberImagePainter(data = photo),
+                painter = rememberImagePainter(data = photo.urls.regular),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize()
             )
@@ -88,6 +90,26 @@ fun UnsplashItem(photo: UnsplashImage) {
                     color = Color.White,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
+
+//                // testing to add a heart
+//                Text(
+//                    text ="❤️",
+////                    text = " Heart: ${data.emoji.cha}",
+//                    style = MaterialTheme.typography.h6,
+//                    maxLines = 1,
+//                    color = Color.White,
+//                    modifier = Modifier.padding(bottom = 4.dp)
+//                )
+
+                // Trying to add likes
+                Text(
+                    text = "❤️  ${photo.likes}",
+                    style = MaterialTheme.typography.h6,
+                    maxLines = 1,
+                    color = Color.White,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+
             }
 
 

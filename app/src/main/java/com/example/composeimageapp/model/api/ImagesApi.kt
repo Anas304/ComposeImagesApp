@@ -7,6 +7,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
@@ -38,5 +39,4 @@ class UnplashWebService {
         @GET("/photos")
         suspend fun getPhotoResponse(): List<UnsplashImage>
     }
-
 }

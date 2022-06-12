@@ -3,8 +3,10 @@ package com.example.composeimageapp.model.response
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
-/*@Serializable
-data class Urls(val regular: String )*/
-
+// I Think this is the Gson data we get from the url.
+// We kinda convert it from JSON to a kotlin object with this dataclass
 @Serializable
-data class Urls(@SerializedName("regular") val regularImage: String = "" )
+data class Urls(val regular: String )
+
+//@Serializable
+//data class Urls(@SerializedName("regular") val regularImage: String = "" )
